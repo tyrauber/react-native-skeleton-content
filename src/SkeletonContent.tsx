@@ -5,7 +5,9 @@ import Animated, {
   interpolateColor,
   interpolateNode,
   useDerivedValue,
-  useValue,
+  useSharedValue,
+  withRepeat,
+  withTiming,
 } from 'react-native-reanimated';
 
 import {
@@ -14,7 +16,6 @@ import {
   DEFAULT_ANIMATION_TYPE,
   DEFAULT_BONE_COLOR,
   DEFAULT_BORDER_RADIUS,
-  DEFAULT_EASING,
   DEFAULT_DURATION,
   DEFAULT_HIGHLIGHT_COLOR,
   DEFAULT_LOADING,
@@ -22,7 +23,6 @@ import {
   IDirection,
 } from './Constants';
 
-const { useCode, set, cond, eq } = Animated;
 const { useState, useCallback } = React;
 
 const styles = StyleSheet.create({
@@ -54,7 +54,6 @@ const useLayout = () => {
 
 function SkeletonContent({
   containerStyle = styles.container,
-  easing = DEFAULT_EASING,
   duration = DEFAULT_DURATION,
   layout = [],
   animationType = DEFAULT_ANIMATION_TYPE,
@@ -65,7 +64,7 @@ function SkeletonContent({
   children,
 }: ISkeletonContentProps) {
 
-  const animationValue = useValue(0);
+  let animationValue = useSharedValue(0);
   const loadingValue = useValue(isLoading ? 1 : 0);
   const shiverValue = useValue(animationType === 'shiver' ? 1 : 0);
 
@@ -73,11 +72,19 @@ function SkeletonContent({
 
   const backgroundPulseColor = useDerivedValue(() =>
     interpolateColor(
-      animationValue[' __value'],
+      animationValue.value,
       [0, 1],
       [boneColor!, highlightColor!]
     )
   );
+
+  animationValue = useDerivedValue(() => {
+    if (isLoading) return 0;
+    if (animationType === 'shiver') {
+      return withRepeat(withTiming(duration!), -1);
+    }
+    return withRepeat(withTiming(duration! / 2), -1);
+  }, [isLoading, animationType, duration]);
 
   const getBoneWidth = (boneLayout: ICustomViewStyle): number =>
     (typeof boneLayout.width === 'string'
@@ -204,7 +211,7 @@ function SkeletonContent({
       animationDirection === 'horizontalLeft' ||
       animationDirection === 'horizontalRight'
     ) {
-      const interpolatedPosition = interpolateNode(animationValue, {
+      const interpolatedPosition = interpolateNode(animationValue.value, {
         inputRange: [0, 1],
         outputRange: getPositionRange(boneLayout),
       });
@@ -272,11 +279,11 @@ function SkeletonContent({
           yOutputRange.reverse();
         }
       }
-      let translateX = interpolateNode(animationValue, {
+      let translateX = interpolateNode(animationValue.value, {
         inputRange: [0, 1],
         outputRange: xOutputRange,
       });
-      let translateY = interpolateNode(animationValue, {
+      let translateY = interpolateNode(animationValue.value, {
         inputRange: [0, 1],
         outputRange: yOutputRange,
       });
