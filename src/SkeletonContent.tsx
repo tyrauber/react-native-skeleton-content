@@ -65,9 +65,6 @@ function SkeletonContent({
 }: ISkeletonContentProps) {
 
   let animationValue = useSharedValue(0);
-  const loadingValue = useValue(isLoading ? 1 : 0);
-  const shiverValue = useValue(animationType === 'shiver' ? 1 : 0);
-
   const [componentSize, onLayout] = useLayout();
 
   const backgroundPulseColor = useDerivedValue(() =>
