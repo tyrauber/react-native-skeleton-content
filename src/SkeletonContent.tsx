@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { LayoutChangeEvent, StyleSheet, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import Animated, { interpolateNode } from 'react-native-reanimated';
-import {
+import Animated, {
   interpolateColor,
-  loop,
+  interpolateNode,
+  useDerivedValue,
   useValue,
-} from 'react-native-redash/lib/module/v1';
+} from 'react-native-reanimated';
+
 import {
   ICustomViewStyle,
   DEFAULT_ANIMATION_DIRECTION,
@@ -51,7 +52,7 @@ const useLayout = () => {
   return [size, onLayout];
 };
 
-const SkeletonContent: React.FunctionComponent<ISkeletonContentProps> = ({
+function SkeletonContent({
   containerStyle = styles.container,
   easing = DEFAULT_EASING,
   duration = DEFAULT_DURATION,
@@ -62,40 +63,20 @@ const SkeletonContent: React.FunctionComponent<ISkeletonContentProps> = ({
   boneColor = DEFAULT_BONE_COLOR,
   highlightColor = DEFAULT_HIGHLIGHT_COLOR,
   children,
-}) => {
+}: ISkeletonContentProps) {
+
   const animationValue = useValue(0);
   const loadingValue = useValue(isLoading ? 1 : 0);
   const shiverValue = useValue(animationType === 'shiver' ? 1 : 0);
 
   const [componentSize, onLayout] = useLayout();
 
-  useCode(
-    () =>
-      cond(eq(loadingValue, 1), [
-        cond(
-          eq(shiverValue, 1),
-          [
-            set(
-              animationValue,
-              loop({
-                duration,
-                easing,
-              })
-            ),
-          ],
-          [
-            set(
-              animationValue,
-              loop({
-                duration: duration! / 2,
-                easing,
-                boomerang: true,
-              })
-            ),
-          ]
-        ),
-      ]),
-    [loadingValue, shiverValue, animationValue]
+  const backgroundPulseColor = useDerivedValue(() =>
+    interpolateColor(
+      animationValue[' __value'],
+      [0, 1],
+      [boneColor!, highlightColor!]
+    )
   );
 
   const getBoneWidth = (boneLayout: ICustomViewStyle): number =>
@@ -188,10 +169,7 @@ const SkeletonContent: React.FunctionComponent<ISkeletonContentProps> = ({
     const pulseStyles = [
       getBoneStyles(boneLayout),
       {
-        backgroundColor: interpolateColor(animationValue, {
-          inputRange: [0, 1],
-          outputRange: [boneColor!, highlightColor!],
-        }),
+        backgroundColor: backgroundPulseColor,
       },
     ];
     if (animationType === 'none') pulseStyles.pop();
@@ -392,6 +370,6 @@ const SkeletonContent: React.FunctionComponent<ISkeletonContentProps> = ({
       {isLoading ? getBones(layout!, children) : children}
     </View>
   );
-};
+}
 
 export default React.memo(SkeletonContent);
