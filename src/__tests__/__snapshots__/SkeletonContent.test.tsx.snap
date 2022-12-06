@@ -41,23 +41,25 @@ exports[`SkeletonComponent test suite should have correct props and layout betwe
         ]
       }
     >
-      <ViewManagerAdapter_ExpoLinearGradient
-        proxiedProperties={
+      <BVLinearGradient
+        colors={
+          Array [
+            4292995566,
+            4294113532,
+            4292995566,
+          ]
+        }
+        endPoint={
           Object {
-            "colors": Array [
-              4292995566,
-              4294113532,
-              4292995566,
-            ],
-            "endPoint": Array [
-              1,
-              0,
-            ],
-            "locations": undefined,
-            "startPoint": Array [
-              0,
-              0,
-            ],
+            "x": 1,
+            "y": 0,
+          }
+        }
+        locations={null}
+        startPoint={
+          Object {
+            "x": 0,
+            "y": 0,
           }
         }
         style={
@@ -97,23 +99,25 @@ exports[`SkeletonComponent test suite should have correct props and layout betwe
         ]
       }
     >
-      <ViewManagerAdapter_ExpoLinearGradient
-        proxiedProperties={
+      <BVLinearGradient
+        colors={
+          Array [
+            4292995566,
+            4294113532,
+            4292995566,
+          ]
+        }
+        endPoint={
           Object {
-            "colors": Array [
-              4292995566,
-              4294113532,
-              4292995566,
-            ],
-            "endPoint": Array [
-              1,
-              0,
-            ],
-            "locations": undefined,
-            "startPoint": Array [
-              0,
-              0,
-            ],
+            "x": 1,
+            "y": 0,
+          }
+        }
+        locations={null}
+        startPoint={
+          Object {
+            "x": 0,
+            "y": 0,
           }
         }
         style={
@@ -292,23 +296,25 @@ exports[`SkeletonComponent test suite should support nested layouts 1`] = `
           ]
         }
       >
-        <ViewManagerAdapter_ExpoLinearGradient
-          proxiedProperties={
+        <BVLinearGradient
+          colors={
+            Array [
+              4292995566,
+              4294113532,
+              4292995566,
+            ]
+          }
+          endPoint={
             Object {
-              "colors": Array [
-                4292995566,
-                4294113532,
-                4292995566,
-              ],
-              "endPoint": Array [
-                1,
-                0,
-              ],
-              "locations": undefined,
-              "startPoint": Array [
-                0,
-                0,
-              ],
+              "x": 1,
+              "y": 0,
+            }
+          }
+          locations={null}
+          startPoint={
+            Object {
+              "x": 0,
+              "y": 0,
             }
           }
           style={
@@ -348,23 +354,25 @@ exports[`SkeletonComponent test suite should support nested layouts 1`] = `
           ]
         }
       >
-        <ViewManagerAdapter_ExpoLinearGradient
-          proxiedProperties={
+        <BVLinearGradient
+          colors={
+            Array [
+              4292995566,
+              4294113532,
+              4292995566,
+            ]
+          }
+          endPoint={
             Object {
-              "colors": Array [
-                4292995566,
-                4294113532,
-                4292995566,
-              ],
-              "endPoint": Array [
-                1,
-                0,
-              ],
-              "locations": undefined,
-              "startPoint": Array [
-                0,
-                0,
-              ],
+              "x": 1,
+              "y": 0,
+            }
+          }
+          locations={null}
+          startPoint={
+            Object {
+              "x": 0,
+              "y": 0,
             }
           }
           style={
@@ -405,23 +413,25 @@ exports[`SkeletonComponent test suite should support nested layouts 1`] = `
         ]
       }
     >
-      <ViewManagerAdapter_ExpoLinearGradient
-        proxiedProperties={
+      <BVLinearGradient
+        colors={
+          Array [
+            4292995566,
+            4294113532,
+            4292995566,
+          ]
+        }
+        endPoint={
           Object {
-            "colors": Array [
-              4292995566,
-              4294113532,
-              4292995566,
-            ],
-            "endPoint": Array [
-              1,
-              0,
-            ],
-            "locations": undefined,
-            "startPoint": Array [
-              0,
-              0,
-            ],
+            "x": 1,
+            "y": 0,
+          }
+        }
+        locations={null}
+        startPoint={
+          Object {
+            "x": 0,
+            "y": 0,
           }
         }
         style={
@@ -474,23 +484,25 @@ exports[`SkeletonComponent test suite should support percentage for child size 1
         ]
       }
     >
-      <ViewManagerAdapter_ExpoLinearGradient
-        proxiedProperties={
+      <BVLinearGradient
+        colors={
+          Array [
+            4292995566,
+            4294113532,
+            4292995566,
+          ]
+        }
+        endPoint={
           Object {
-            "colors": Array [
-              4292995566,
-              4294113532,
-              4292995566,
-            ],
-            "endPoint": Array [
-              1,
-              0,
-            ],
-            "locations": undefined,
-            "startPoint": Array [
-              0,
-              0,
-            ],
+            "x": 1,
+            "y": 0,
+          }
+        }
+        locations={null}
+        startPoint={
+          Object {
+            "x": 0,
+            "y": 0,
           }
         }
         style={
@@ -530,23 +542,25 @@ exports[`SkeletonComponent test suite should support percentage for child size 1
         ]
       }
     >
-      <ViewManagerAdapter_ExpoLinearGradient
-        proxiedProperties={
+      <BVLinearGradient
+        colors={
+          Array [
+            4292995566,
+            4294113532,
+            4292995566,
+          ]
+        }
+        endPoint={
           Object {
-            "colors": Array [
-              4292995566,
-              4294113532,
-              4292995566,
-            ],
-            "endPoint": Array [
-              1,
-              0,
-            ],
-            "locations": undefined,
-            "startPoint": Array [
-              0,
-              0,
-            ],
+            "x": 1,
+            "y": 0,
+          }
+        }
+        locations={null}
+        startPoint={
+          Object {
+            "x": 0,
+            "y": 0,
           }
         }
         style={
